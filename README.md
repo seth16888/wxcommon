@@ -1,3 +1,6 @@
+[![Go Version](https://img.shields.io/badge/Go-1.20+-blue)](https://golang.org/)
+[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
+
 # 🌟 项目简介
 
 `wxcommon` 是 Cowx 项目中的公共模块，提供微信相关的通用工具和函数，旨在简化微信生态下的开发流程。

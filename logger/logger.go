@@ -1,6 +1,7 @@
 package logger
 
 import (
+	"fmt"
 	"os"
 	"path/filepath"
 
@@ -90,20 +91,40 @@ func Debug(msg string, fields ...zap.Field) {
 	Log.Debug(msg, fields...)
 }
 
+func Debugf(format string, args ...interface{}) {
+	Log.Debug(fmt.Sprintf(format, args...))
+}
+
 func Info(msg string, fields ...zap.Field) {
 	Log.Info(msg, fields...)
+}
+
+func Infof(format string, args ...interface{}) {
+	Log.Info(fmt.Sprintf(format, args...))
 }
 
 func Warn(msg string, fields ...zap.Field) {
 	Log.Warn(msg, fields...)
 }
 
+func Warnf(format string, args ...interface{}) {
+	Log.Warn(fmt.Sprintf(format, args...))
+}
+
 func Error(msg string, fields ...zap.Field) {
 	Log.Error(msg, fields...)
 }
 
+func Errorf(format string, args ...interface{}) {
+	Log.Error(fmt.Sprintf(format, args...))
+}
+
 func Fatal(msg string, fields ...zap.Field) {
 	Log.Fatal(msg, fields...)
+}
+
+func Fatalf(format string, args ...interface{}) {
+	Log.Fatal(fmt.Sprintf(format, args...))
 }
 
 func Sync() {

@@ -21,7 +21,8 @@ const (
 	Path_Batch_Add_Black_List    = "/cgi-bin/tags/members/batchblacklist"
 	Path_Batch_Remove_Black_List = "/cgi-bin/tags/members/batchunblacklist"
 
-	Path_Create_QRCode = "/cgi-bin/qrcode/create"
+	Path_Create_QRCode  = "/cgi-bin/qrcode/create"
+	Path_Get_QRCode_URL = "/cgi-bin/showqrcode"
 
 	// 创建标签
 	Path_Get_Tags        = "/cgi-bin/tags/get"

@@ -3,7 +3,7 @@ package error
 import "fmt"
 
 type WXError struct {
-	ErrCode int    `json:"errcode" xml:"errcode"`
+	ErrCode int64    `json:"errcode" xml:"errcode"`
 	ErrMsg  string `json:"errmsg" xml:"errmsg"`
 }
 
@@ -11,7 +11,7 @@ func (e *WXError) Error() string {
 	return fmt.Sprintf("code: %d, msg: %s, error: %s", e.ErrCode, MPErrors[e.ErrCode], e.ErrMsg)
 }
 
-var MPErrors = map[int]string{
+var MPErrors = map[int64]string{
 	-1:      "系统繁忙，此时请开发者稍候再试",
 	0:       "请求成功",
 	40001:   "获取 access_token 时 AppSecret 错误，或者 access_token 无效。请开发者认真比对 AppSecret 的正确性，或查看是否正在为恰当的公众号调用接口",

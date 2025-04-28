@@ -1,3 +1,14 @@
+/**
+官网type:
+view:  (url  )链接
+text:  (value)返回文本
+img:   (value)mediaID
+photo:
+video: (value)下载链接
+voice: (value)mediaID
+news:  (value)mediaID + 图文消息news_info => API下发卡片: article_id类型+article_id参数
+*/
+
 package mp
 
 // CreateMenuReq 设置菜单请求数据
@@ -6,7 +17,7 @@ type CreateMenuReq struct {
 	MatchRule *MatchRule `json:"matchrule,omitempty"`
 }
 
-// MenuRes 获取自定义菜单的返回数据
+// MenuRes 获取API设置的菜单返回数据
 type MenuRes struct {
 	WXError
 
@@ -34,10 +45,10 @@ type MatchRule struct {
 type MenuTryMatchRes struct {
 	WXError
 
-	Button []Button `json:"button,omitempty"`
+	Button []*Button `json:"button,omitempty"`
 }
 
-// SelfMenuInfoRes 自定义菜单配置返回结果
+// SelfMenuInfoRes 官网菜单配置详情
 type SelfMenuInfoRes struct {
 	WXError
 
@@ -47,7 +58,7 @@ type SelfMenuInfoRes struct {
 	} `json:"selfmenu_info,omitempty"`
 }
 
-// SelfMenuButton 自定义菜单配置详情
+// SelfMenuButton 官网菜单按钮配置
 type SelfMenuButton struct {
 	Type      string `json:"type,omitempty"`
 	Name      string `json:"name"`
@@ -58,19 +69,19 @@ type SelfMenuButton struct {
 		List []SelfMenuButton `json:"list,omitempty"`
 	} `json:"sub_button,omitempty"`
 	NewsInfo struct {
-		List []ButtonNew `json:"list,omitempty"`
+		List []ButtonNews `json:"list,omitempty"`
 	} `json:"news_info,omitempty"`
 }
 
-// ButtonNew 图文消息菜单
-type ButtonNew struct {
+// ButtonNews 图文消息菜单
+type ButtonNews struct {
 	Title      string `json:"title"`
 	Author     string `json:"author"`
 	Digest     string `json:"digest"`
-	ShowCover  int32  `json:"show_cover"`
-	CoverURL   string `json:"cover_url"`
-	ContentURL string `json:"content_url"`
-	SourceURL  string `json:"source_url"`
+	ShowCover  int32  `json:"show_cover"` //是否显示封面，0为不显示，1为显示
+	CoverURL   string `json:"cover_url"`  //封面图片的URL
+	ContentURL string `json:"content_url"` //正文的URL
+	SourceURL  string `json:"source_url"` //原文的URL，若置空则无查看原文入口
 }
 
 // Button 菜单按钮
@@ -82,6 +93,7 @@ type Button struct {
 	MediaID    string    `json:"media_id,omitempty"`
 	AppID      string    `json:"appid,omitempty"`
 	PagePath   string    `json:"pagepath,omitempty"`
+  ArticleID  string    `json:"article_id,omitempty"`
 	SubButtons []*Button `json:"sub_button,omitempty"`
 }
 
